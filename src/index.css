@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom styles for toggle switch */
+.toggle-checkbox:checked {
+  right: 0;
+  border-color: #4F46E5;
+}
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #4F46E5;
+}
+
+/* High Contrast Mode */
+.high-contrast {
+  --hc-bg: #000000;
+  --hc-fg: #FFFF00;
+}
+
+.high-contrast,
+.high-contrast body,
+.high-contrast #root {
+  background-color: var(--hc-bg) !important;
+  color: var(--hc-fg) !important;
+}
+
+.high-contrast * {
+  background-color: var(--hc-bg) !important;
+  background-image: none !important;
+  color: var(--hc-fg) !important;
+  border-color: var(--hc-fg) !important;
+  outline-color: var(--hc-fg) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.high-contrast *::before,
+.high-contrast *::after {
+  background-color: var(--hc-bg) !important;
+  color: var(--hc-fg) !important;
+  border-color: var(--hc-fg) !important;
+}
+
+/* Ensure borders are visible on inputs and buttons */
+.high-contrast button,
+.high-contrast input,
+.high-contrast select,
+.high-contrast textarea,
+.high-contrast [role="button"],
+.high-contrast a {
+  border: 1px solid var(--hc-fg) !important;
+}
+
+/* Fix for SVGs and Icons */
+.high-contrast svg,
+.high-contrast svg * {
+  fill: var(--hc-fg) !important;
+  stroke: var(--hc-fg) !important;
+  background-color: transparent !important;
+}
+
+/* Fix for images */
+.high-contrast img,
+.high-contrast video {
+  filter: grayscale(100%) contrast(120%);
+  background-color: transparent !important;
+}
+
+/* Placeholder text */
+.high-contrast ::placeholder {
+  color: var(--hc-fg) !important;
+  opacity: 0.8;
+}
+
+/* Specific fix for material icons */
+.high-contrast .material-icons {
+  color: var(--hc-fg) !important;
+  background-color: transparent !important;
+}
